@@ -4,6 +4,7 @@
 namespace common\component\Parsers\Model;
 
 use common\component\Parsers\Model\Parsers\ArrayParser;
+use common\component\Parsers\Model\Parsers\BasicParser;
 use common\models\project\Source;
 
 class CrawledJson implements CrawledDataInterface {
@@ -42,7 +43,7 @@ class CrawledJson implements CrawledDataInterface {
     /** @var boolean */
     private $isValid = true;
 
-    public function __construct($json, ArrayParser $parser) {
+    public function __construct($json, BasicParser $parser) {
         $this->json = $json;
         $this->parser = $parser;
     }
@@ -54,10 +55,12 @@ class CrawledJson implements CrawledDataInterface {
             return;
         }
 
-        $this->websiteUrl = $this->parser->parseWebsiteUrl($this->data);
-        $this->externalUrl = $this->parser->parseExternalUrl($this->data);
+        $this->parser->setupDataForParsing($this->data);
+
+        $this->websiteUrl = $this->parser->parseWebsiteUrl();
+        $this->externalUrl = $this->parser->parseExternalUrl();
         $this->externalId = $this->parser->getExternalId();
-        $this->name = $this->parser->parseProjectName($this->data);
+        $this->name = $this->parser->parseProjectName();
 
         if ($this->externalUrl === null ||
             $this->name === null ||
@@ -66,9 +69,9 @@ class CrawledJson implements CrawledDataInterface {
             return;
         }
 
-        $this->description = $this->parser->parseProjectDescription($this->data);
-        $this->logoUrl = $this->parser->parseLogoUrl($this->data);
-        $this->projectData = $this->parser->parseProjectData($this->data);
+        $this->description = $this->parser->parseProjectDescription();
+        $this->logoUrl = $this->parser->parseLogoUrl();
+        $this->projectData = $this->parser->parseProjectData();
     }
 
     private function lazyInit(): void {
