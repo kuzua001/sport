@@ -118,3 +118,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+.site-header-element {
+    background-color: #586b88;
+}
+
+.site-header-element a {
+    color: #fff!important;
+}

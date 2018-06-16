@@ -4,8 +4,8 @@
 
 $this->title = 'My Yii Application';
 
-/** @var \common\models\project\Project[] $projects */
-$projects = \common\models\project\Project::find()->limit(10)->all();
+/** @var \common\models\project\Tournament[] $projects */
+$projects = \common\models\project\Tournament::find()->limit(10)->all();
 ?>
 <div class="site-index">
 

@@ -6,6 +6,8 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+Yii::setAlias('@web', '/');
+
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),

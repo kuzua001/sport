@@ -2,7 +2,7 @@
 
 namespace common\component\Calculator;
 
-use common\models\project\Project;
+use common\models\project\Tournament;
 
 class ScamScoreCalculator {
     protected $processors;
@@ -51,10 +51,10 @@ class ScamScoreCalculator {
         self::SLACK => ['weight' => -1],
     ];
 
-    /** @var Project */
+    /** @var Tournament */
     private $project;
 
-    public function __construct(Project $project) {
+    public function __construct(Tournament $project) {
         $this->project = $project;
 
         $this->processors = [

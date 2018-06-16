@@ -21,7 +21,7 @@ use yii\db\ActiveRecord;
  * @property $website             string
  * @package common\models\project
  */
-class Project extends ActiveRecord {
+class Tournament extends ActiveRecord {
 
     public static function tableName():string {
         return 'data.projects';

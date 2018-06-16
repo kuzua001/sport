@@ -9,6 +9,21 @@
 namespace common\component\Utils;
 
 
+$selector = [
+    'team' => [
+        'type' => 'list',
+        'root' => '#team > .row > div',
+        'properties' => [
+            'name' => 'h3',
+            'job' => 'h4',
+            'linkedin' => ['.socials a', 'href', 'Attribute::Same']
+        ],
+
+    ]
+];
+
+var_dump($selector);
+
 class ExtendedHtmlSelector
 {
     public const TYPE_VALUE   = 'value';
